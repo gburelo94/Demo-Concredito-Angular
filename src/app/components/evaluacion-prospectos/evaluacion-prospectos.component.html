@@ -1,0 +1,86 @@
+<div class="container form-group required">
+    <div class="card p-4 mt-4">
+        <div class="row justify-content-end">
+            <div class="col-1">
+                <button type="submit" class="btn btn-danger btn-md btn-block" routerLink="/"><i class="fas fa-times-circle"></i> Salir</button>
+            </div>
+        </div>
+        <h1 style="text-align: center;">Prospecto</h1>
+        <form novalidate [formGroup]="formulario" (ngSubmit)="cambiarSituacion()">
+            <div class="form-group">
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label>Nombre(s)</label>
+                        <input type="text" formControlName="nombre" class="form-control" id="nombre" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label>Apellido Paterno</label>
+                        <input type="text" formControlName="apPaterno" class="form-control" id="apPaterno" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label>Apellido Materno</label>
+                        <input type="text" formControlName="apMaterno" class="form-control" id="apMaterno" readonly>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label>Calle</label>
+                        <input type="text" formControlName="calle" class="form-control" id="calle" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label>Número</label>
+                        <input type="text" formControlName="numero" class="form-control" id="numero" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label>Colonia</label>
+                        <input type="text" formControlName="colonia" class="form-control" id="colonia" readonly>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label>Código postal</label>
+                        <input type="text" formControlName="codigoPostal" class="form-control" id="codigo" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label>Teléfono</label>
+                        <input type="text" formControlName="telefono" class="form-control" id="telefono" readonly>
+                    </div>
+                    <div class="col-4">
+                        <label>R.F.C.</label>
+                        <input type="text" formControlName="rfc" class="form-control" id="rfc" readonly>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label>Documentación</label>
+                    </div>                  
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <label>Status del prospecto</label>
+                        <select class="form-control" formControlName="status" (change)="cambio()">
+                            <option value="" disabled>Elija un status</option>
+                            <option *ngFor="let s of situacion" [ngValue]="s">{{s}}</option>
+                         </select>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <label class="control-label">Observaciones</label>
+                        <textarea formControlName="observaciones" class="form-control" id="observaciones" rows="4"></textarea>
+                    </div>                  
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label style="font-style: italic;" for="inputCodigo"><span>(<span style="color: red;">*</span>)</span> Campos obligatorios.</label>
+                    </div>                    
+                </div>
+                <div class="row mt-4">
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <button type="submit"  [disabled]="formulario.invalid" class="btn btn-success btn-lg btn-block"><i class="fas fa-paper-plane"></i> Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

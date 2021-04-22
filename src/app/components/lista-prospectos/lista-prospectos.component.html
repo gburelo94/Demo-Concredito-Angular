@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="card p-4 mt-5">
+        <div class="row">
+            <div class="col-11 mb-3">
+                <h1 style="text-align: center;">Prospectos</h1>
+            </div>
+            <div class="col-1 mt-2">
+                <button class="btn btn-primary" routerLink="/prospectos">Nuevo</button>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Nombre(s)</th>
+                    <th>Apellido paterno</th>
+                    <th>Apellido materno</th>
+                    <th>Status</th>
+                    <th>Ver</th>
+                    <th>Evaluar Prospecto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of listaProspectos">
+                    <td>{{ p.nombre }}</td>
+                    <td>{{ p.apPaterno}}</td>
+                    <td>{{ p.apMaterno}}</td>
+                    <td>{{ p.status}}</td>
+                    <td><i class="faw fas fa-eye text-info" [routerLink]="['/ver-prospectos', p.id]"></i></td>
+                    <td><i class="faw fas fa-eye text-info" [routerLink]="['/evaluar-prospectos', p.id]"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

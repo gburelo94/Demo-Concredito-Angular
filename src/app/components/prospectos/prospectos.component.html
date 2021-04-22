@@ -1,0 +1,88 @@
+<div class="container form-group required">
+    <div class="card p-4 mt-4">
+        <div class="row justify-content-end">
+            <div class="col-1">
+                <button class="btn btn-sm btn-danger" (click)="openVerticallyCentered(content)"><i class=" fa fa-times-circle"></i> Salir</button>
+            </div>
+        </div>
+        <h1 style="text-align: center;">Capturar prospecto</h1>
+        <form novalidate [formGroup]="formulario" (ngSubmit)="crearProspecto()">
+            <div class="form-group">
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label class="control-label">Nombre(s) </label>
+                        <input type="text" formControlName="nombre" class="form-control" id="nombre" maxlength="50">
+                    </div>
+                    <div class="col-4">
+                        <label class="control-label">Apellido Paterno </label>
+                        <input type="text" formControlName="apPaterno" class="form-control" id="apPaterno" maxlength="50">
+                    </div>
+                    <div class="col-4">
+                        <label>Apellido Materno </label>
+                        <input type="text" formControlName="apMaterno" class="form-control" id="apMaterno" maxlength="50">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label class="control-label">Calle </label>
+                        <input type="text" formControlName="calle" class="form-control" id="calle" maxlength="80">
+                    </div>
+                    <div class="col-4">
+                        <label class="control-label">Número </label>
+                        <input type="text" formControlName="numero" class="form-control" id="numero" maxlength="80">
+                    </div>
+                    <div class="col-4">
+                        <label class="control-label">Colonia </label>
+                        <input type="text" formControlName="colonia" class="form-control" id="colonia" maxlength="80">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label class="control-label">Código postal </label>
+                        <input type="text" formControlName="codigoPostal" class="form-control" id="codigo" maxlength="5">
+                    </div>
+                    <div class="col-4">
+                        <label class="control-label">Teléfono </label>
+                        <input type="text" formControlName="telefono" class="form-control" id="telefono" maxlength="10">
+                    </div>
+                    <div class="col-4">
+                        <label class="control-label">R.F.C. </label>
+                        <input type="text" formControlName="rfc" class="form-control" id="rfc" maxlength="13">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-8">
+                        <label class="control-label">Documentos </label>
+                        <input type="file" class="form-control" formControlName="archivo" (change)="selectFiles($event)">
+                    </div>  
+                    <!--<div class="col-3 mt-4">
+                        <button type="button" class="btn btn-sm btn-secondary mt-1" (click)="addArchivo()"><i class="fas fa-plus-circle"></i> Añadir</button>
+                    </div>-->                  
+                </div>
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <label style="font-style: italic;" for="inputCodigo"><span>(<span style="color: red;">*</span>)</span> Campos obligatorios.</label>
+                    </div>                    
+                </div>
+                <div class="row mt-4">
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <button type="submit"  [disabled]="formulario.invalid" class="btn btn-success btn-lg btn-block"><i class="fas fa-paper-plane"></i> Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">¿Está seguro que desea salir?</h4>
+    </div>
+    <div class="modal-body">
+      <p>Los datos que no hayan sido enviados se perderán.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger ps-4 pe-4" routerLink="/" (click)="modal.close('Close click')"><i class=" fa fa-times-circle"></i>&nbsp;Salir&nbsp;</button>
+      <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')"> <i class="fa fa-undo-alt"></i> Cancelar</button>
+    </div>
+</ng-template>
